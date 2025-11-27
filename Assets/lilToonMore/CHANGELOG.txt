@@ -1,0 +1,5 @@
+Ver. 1.0.1
+Fixed shader errors with cutout and transparent
+
+Ver. 1.0.0
+First release

@@ -12,7 +12,7 @@
     {
         "jp.lilxyzw.liltoon" : "2.3.2"
     },
-    "changelogUrl": "https://github.com/PenguinDOOM/lilToonMore/blob/master/Assets/lilToonMore/CHANGELOG.md",
+    "changelogUrl": "https://github.com/PenguinDOOM/lilToonMore/blob/master/Assets/lilToonMore/CHANGELOG.txt",
     "licensesUrl": "https://github.com/PenguinDOOM/lilToonMore/blob/master/Assets/lilToonMore/LICENSE",
     "license": "MIT",
     "keywords": ["Toon", "Shader", "Material"],
