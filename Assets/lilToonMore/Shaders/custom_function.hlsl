@@ -139,7 +139,8 @@ void lilGetMain6th(inout lilFragData fd, inout float4 color6th, inout float main
     }
 }
 
-float3 matcap3rdN = 0.0;
+float3 matcap3rdN    = 0.0;
+float3 matcap4thN    = 0.0;
 
 //MatCap3rd
 void lilGetMatCap3rd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
@@ -147,8 +148,8 @@ void lilGetMatCap3rd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
     if(_UseMatCap3rd)
     {
         // Normal
-        float3 N = 0.0;
-        // if(_Anisotropy2MatCap3rd)   matcap3rdN   = anisoNormalWS;
+        float3 N = matcap3rdN;
+        
         N = lerp(fd.origN, matcap3rdN, _MatCap3rdNormalStrength);
         if(_MatCap3rdCustomNormal)
         {
@@ -190,9 +191,9 @@ void lilGetMatCap4th(inout lilFragData fd LIL_SAMP_IN_FUNC(samp)) // Opaque only
     if(_UseMatCap4th)
     {
         // Normal
-        float3 N = 0.0;
-        // if(_Anisotropy2MatCap4th)   matcap3rdN   = anisoNormalWS;
-        N = lerp(fd.origN, matcap3rdN, _MatCap4thNormalStrength);
+        float3 N = matcap4thN;
+        
+        N = lerp(fd.origN, matcap4thN, _MatCap4thNormalStrength);
         if(_MatCap4thCustomNormal)
         {
             float4 normalTex = LIL_SAMPLE_2D_ST(_MatCap4thBumpMap, samp, fd.uvMain);

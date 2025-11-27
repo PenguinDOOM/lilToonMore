@@ -129,6 +129,7 @@
         [lilToggle]     _MatCap3rdCustomNormal                   ("sMatCapCustomNormal", Int) = 0
         [Normal]        _MatCap3rdBumpMap                        ("Normal Map", 2D) = "bump" {}
                         _MatCap3rdBumpScale                      ("Scale", Range(-10,10)) = 1
+        [lilToggle]     _Anisotropy2MatCap3rd                    ("Use Anisotropy Reflection", Int) = 0
         
         //----------------------------------------------------------------------------------------------------------------------
         // MatCap4th
@@ -152,6 +153,7 @@
         [lilToggle]     _MatCap4thCustomNormal                   ("sMatCapCustomNormal", Int) = 0
         [Normal]        _MatCap4thBumpMap                        ("Normal Map", 2D) = "bump" {}
                         _MatCap4thBumpScale                      ("Scale", Range(-10,10)) = 1
+        [lilToggle]     _Anisotropy2MatCap4th                    ("Use Anisotropy Reflection", Int) = 0
 
         //----------------------------------------------------------------------------------------------------------------------
         // Glitter2nd

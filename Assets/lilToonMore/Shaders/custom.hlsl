@@ -129,6 +129,7 @@
     bool    _MatCap3rdPerspective; \
     bool    _MatCap3rdZRotCancel; \
     bool    _MatCap3rdCustomNormal; \
+    bool    _Anisotropy2MatCap3rd; \
     
     float4  _MatCap4thColor; \
     float4  _MatCap4thTex_ST; \
@@ -150,6 +151,7 @@
     bool    _MatCap4thPerspective; \
     bool    _MatCap4thZRotCancel; \
     bool    _MatCap4thCustomNormal; \
+    bool    _Anisotropy2MatCap4th; \
     
     float4  _Glitter2ndColor; \
     float4  _Glitter2ndColorTex_ST; \

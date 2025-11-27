@@ -21,6 +21,39 @@
     #endif
 #endif
 
+#if !defined(OVERRIDE_ANISOTROPY)
+    #if defined(LIL_FEATURE_AnisotropyTangentMap)
+        #define LIL_SAMPLE_AnisotropyTangentMap anisoTangentMap = LIL_SAMPLE_2D_ST(_AnisotropyTangentMap, sampler_MainTex, fd.uvMain)
+    #else
+        #define LIL_SAMPLE_AnisotropyTangentMap
+    #endif
+
+    #if defined(LIL_FEATURE_AnisotropyScaleMask)
+        #define LIL_SAMPLE_AnisotropyScaleMask fd.anisotropy *= LIL_SAMPLE_2D_ST(_AnisotropyScaleMask, sampler_MainTex, fd.uvMain).r
+    #else
+        #define LIL_SAMPLE_AnisotropyScaleMask
+    #endif
+
+    #define OVERRIDE_ANISOTROPY \
+        if(_UseAnisotropy) \
+        { \
+            float4 anisoTangentMap = float4(0.5,0.5,1.0,0.5); \
+            LIL_SAMPLE_AnisotropyTangentMap; \
+            float3 anisoTangent = lilUnpackNormalScale(anisoTangentMap, 1.0); \
+            fd.T = lilOrthoNormalize(normalize(mul(anisoTangent, fd.TBN)), fd.N); \
+            fd.B = cross(fd.N, fd.T); \
+            fd.anisotropy = _AnisotropyScale; \
+            LIL_SAMPLE_AnisotropyScaleMask; \
+            float3 anisoNormalWS = lilGetAnisotropyNormalWS(fd.N, fd.T, fd.B, fd.V, fd.anisotropy); \
+            if(_Anisotropy2Reflection)  fd.reflectionN  = anisoNormalWS; \
+            if(_Anisotropy2MatCap)      fd.matcapN      = anisoNormalWS; \
+            if(_Anisotropy2MatCap2nd)   fd.matcap2ndN   = anisoNormalWS; \
+            if(_Anisotropy2MatCap3rd)   matcap3rdN   = anisoNormalWS; \
+            if(_Anisotropy2MatCap4th)   matcap4thN   = anisoNormalWS; \
+            if(_Anisotropy2Reflection)  fd.perceptualRoughness = saturate(1.2 - abs(fd.anisotropy)); \
+        }
+#endif
+
 #if !defined(OVERRIDE_MAIN3RD)
     #define OVERRIDE_MAIN3RD \
         float4 color4th = 1.0; \
