@@ -1,3 +1,9 @@
+2025/11/28
+Ver. 1.1.0
+Added anisotropy reflection to MatCap
+Added copy, paste, and reset buttons to each category
+
+2025/11/27
 Ver. 1.0.2
 Fixed Couldn't open include file 'custom_macro.hlsl'. at line 13
 
