@@ -132,7 +132,7 @@
         
         //----------------------------------------------------------------------------------------------------------------------
         // MatCap4th
-        [lilToggleLeft] _UseMatCap4th                            ("MatCap 4th", Int) = 0
+        [lilToggleLeft] _UseMatCap4th                            ("MatCap 4th Opaque only", Int) = 0
         [lilHDR]        _MatCap4thColor                          ("sColor", Color) = (1,1,1,1)
                         _MatCap4thTex                            ("Texture", 2D) = "white" {}
                         _MatCap4thMainStrength                   ("sMainColorPower", Range(0, 1)) = 0

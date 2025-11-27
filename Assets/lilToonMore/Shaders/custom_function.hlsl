@@ -1,4 +1,4 @@
-//4th
+// Main4th
 void lilGetMain4th(inout lilFragData fd, inout float4 color4th, inout float main4thDissolveAlpha LIL_SAMP_IN_FUNC(samp))
 {
     color4th = _Color4th;
@@ -45,6 +45,7 @@ void lilGetMain4th(inout lilFragData fd, inout float4 color4th, inout float main
     }
 }
 
+// Main5th
 void lilGetMain5th(inout lilFragData fd, inout float4 color5th, inout float main5thDissolveAlpha LIL_SAMP_IN_FUNC(samp))
 {
     color5th = _Color5th;
@@ -91,6 +92,7 @@ void lilGetMain5th(inout lilFragData fd, inout float4 color5th, inout float main
     }
 }
 
+// Main6th
 void lilGetMain6th(inout lilFragData fd, inout float4 color6th, inout float main6thDissolveAlpha LIL_SAMP_IN_FUNC(samp))
 {
     color6th = _Color6th;
@@ -139,7 +141,7 @@ void lilGetMain6th(inout lilFragData fd, inout float4 color6th, inout float main
 
 float3 matcap3rdN = 0.0;
 
-
+//MatCap3rd
 void lilGetMatCap3rd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
 {
     if(_UseMatCap3rd)
@@ -182,7 +184,8 @@ void lilGetMatCap3rd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
     }
 }
 
-void lilGetMatCap4th(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
+// MatCap4th
+void lilGetMatCap4th(inout lilFragData fd LIL_SAMP_IN_FUNC(samp)) // Opaque only
 {
     if(_UseMatCap4th)
     {
@@ -224,6 +227,7 @@ void lilGetMatCap4th(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
     }
 }
 
+// Glitter2nd
 void lilGlitter2nd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
 {
     if(_UseGlitter2nd)

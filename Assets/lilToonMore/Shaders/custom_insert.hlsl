@@ -50,10 +50,16 @@
 #endif
 
 #if !defined(OVERRIDE_MATCAP_2ND)
-    #define OVERRIDE_MATCAP_2ND \
-        lilGetMatCap2nd(fd LIL_SAMP_IN(sampler_MainTex)); \
-        lilGetMatCap3rd(fd LIL_SAMP_IN(sampler_MainTex)); \
-        lilGetMatCap4th(fd LIL_SAMP_IN(sampler_MainTex));
+    #if LIL_RENDER != 0
+        #define OVERRIDE_MATCAP_2ND \
+            lilGetMatCap2nd(fd LIL_SAMP_IN(sampler_MainTex)); \
+            lilGetMatCap3rd(fd LIL_SAMP_IN(sampler_MainTex));
+    #else
+        #define OVERRIDE_MATCAP_2ND \
+            lilGetMatCap2nd(fd LIL_SAMP_IN(sampler_MainTex)); \
+            lilGetMatCap3rd(fd LIL_SAMP_IN(sampler_MainTex)); \
+            lilGetMatCap4th(fd LIL_SAMP_IN(sampler_MainTex));
+    #endif
 #endif
 
 #if !defined(OVERRIDE_GLITTER)
