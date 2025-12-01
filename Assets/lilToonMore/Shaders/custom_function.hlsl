@@ -139,9 +139,6 @@ void lilGetMain6th(inout lilFragData fd, inout float4 color6th, inout float main
     }
 }
 
-float3 matcap3rdN    = 0.0;
-float3 matcap4thN    = 0.0;
-
 //MatCap3rd
 void lilGetMatCap3rd(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
 {
