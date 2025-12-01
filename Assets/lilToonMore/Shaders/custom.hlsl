@@ -155,7 +155,28 @@
     bool    _Glitter2ndColorTex_UVMode; \
     bool    _Glitter2ndApplyTransparency; \
     bool    _Glitter2ndApplyShape; \
-    bool    _Glitter2ndAngleRandomize;
+    bool    _Glitter2ndAngleRandomize;\
+    
+    float   _WarpAnimSpeed; \
+    float   _WarpIntensity; \
+    float   _WarpBigAmp; \
+    float   _WarpBigFreqX; \
+    float   _WarpBigFreqY; \
+    float   _WarpBigSpeedX; \
+    float   _WarpBigSpeedY; \
+    float   _WarpSmallAmp; \
+    float   _WarpSmallFreqX; \
+    float   _WarpSmallFreqY; \
+    float   _WarpSmallSpeedX; \
+    float   _WarpSmallSpeedY; \
+    bool    _UseWarp; \
+    bool    _UseWarpMain1st; \
+    bool    _UseWarpMain2nd; \
+    bool    _UseWarpMain3rd; \
+    bool    _UseWarpMain4th; \
+    bool    _UseWarpMain5th; \
+    bool    _UseWarpMain6th; \
+    bool    _WarpReplaceRefract;
 
 // Custom textures
 #define LIL_CUSTOM_TEXTURES \

@@ -1,5 +1,13 @@
 #include "custom_function.hlsl"
 
+#if !defined(OVERRIDE_MAIN)
+    #define OVERRIDE_MAIN \
+        if(_UseWarp && _UseWarpMain1st) warp(fd.uvMain); \
+        LIL_GET_MAIN_TEX \
+        LIL_APPLY_MAIN_TONECORRECTION \
+        fd.col *= _Color;
+#endif
+
 #if !defined(OVERRIDE_NORMAL_2ND)
     #define LIL_SAMPLE_Bump3rdScaleMask bump3rdScale *= LIL_SAMPLE_2D_ST(_Bump3rdScaleMask, sampler_MainTex, fd.uvMain).r
 
@@ -54,6 +62,11 @@
         }
 #endif
 
+#if !defined(OVERRIDE_MAIN2ND)
+    #define OVERRIDE_MAIN2ND \
+        lilGetMain2ndMore(fd, color2nd, main2ndDissolveAlpha LIL_SAMP_IN(sampler_MainTex));
+#endif
+
 #if !defined(OVERRIDE_MAIN3RD)
     #define OVERRIDE_MAIN3RD \
         float4 color4th = 1.0; \
@@ -78,6 +91,12 @@
             if(_UseMain6thTex) fd.col.rgb = lerp(fd.col.rgb, 0, color6th.a - color6th.a * _Main6thEnableLighting);
     #endif
 #endif
+
+#define OVERRIDE_REFRACTION \
+    if(_UseWarp && _WarpReplaceRefract) \
+        lilBGWarp(fd LIL_SAMP_IN(sampler_MainTex)); \
+    else \
+        lilRefraction(fd LIL_SAMP_IN(sampler_MainTex));
 
 #if !defined(OVERRIDE_MATCAP_2ND)
     #if LIL_RENDER != 0

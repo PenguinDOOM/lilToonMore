@@ -176,7 +176,29 @@ namespace lilToon
             "_Glitter2ndApplyTransparency",
             "_Glitter2ndVRParallaxStrength"
         };
-
+        
+        readonly string[] warpCategory = new string[]
+        {
+            "_WarpAnimSpeed",
+            "_WarpIntensity",
+            "_WarpBigAmp",
+            "_WarpBigFreqX",
+            "_WarpBigFreqY",
+            "_WarpBigSpeedX",
+            "_WarpBigSpeedY",
+            "_WarpSmallAmp",
+            "_WarpSmallFreqX",
+            "_WarpSmallFreqY",
+            "_WarpSmallSpeedX",
+            "_WarpSmallSpeedY",
+            "_UseWarpMain1st",
+            "_UseWarpMain2nd",
+            "_UseWarpMain3rd",
+            "_UseWarpMain4th",
+            "_UseWarpMain5th",
+            "_UseWarpMain6th",
+            "_WarpReplaceRefract"
+        };
 
         private MaterialProperty useMain4thTex;
         private MaterialProperty color4th;
@@ -318,6 +340,28 @@ namespace lilToon
         private MaterialProperty glitter2ndBackfaceMask;
         private MaterialProperty glitter2ndApplyTransparency;
         private MaterialProperty glitter2ndVRParallaxStrength;
+
+        private MaterialProperty useWarp;
+        private MaterialProperty warpAnimSpeed;
+        private MaterialProperty warpIntensity;
+        private MaterialProperty warpBigAmp;
+        private MaterialProperty warpBigFreqX;
+        private MaterialProperty warpBigFreqY;
+        private MaterialProperty warpBigSpeedX;
+        private MaterialProperty warpBigSpeedY;
+        private MaterialProperty warpSmallAmp;
+        private MaterialProperty warpSmallFreqX;
+        private MaterialProperty warpSmallFreqY;
+        private MaterialProperty warpSmallSpeedX;
+        private MaterialProperty warpSmallSpeedY;
+        private MaterialProperty useWarpMain1st;
+        private MaterialProperty useWarpMain2nd;
+        private MaterialProperty useWarpMain3rd;
+        private MaterialProperty useWarpMain4th;
+        private MaterialProperty useWarpMain5th;
+        private MaterialProperty useWarpMain6th;
+        private MaterialProperty warpReplaceRefract;
+
         
         // ▼ コピー／ペースト用バッファ
         Dictionary<string, object> copyBuffer = new Dictionary<string, object>();
@@ -631,6 +675,28 @@ namespace lilToon
             glitter2ndBackfaceMask = FindProperty("_Glitter2ndBackfaceMask", props);
             glitter2ndApplyTransparency = FindProperty("_Glitter2ndApplyTransparency", props);
             glitter2ndVRParallaxStrength = FindProperty("_Glitter2ndVRParallaxStrength", props);
+
+            useWarp = FindProperty("_UseWarp", props);
+            warpAnimSpeed = FindProperty("_WarpAnimSpeed", props);
+            warpIntensity = FindProperty("_WarpIntensity", props);
+            warpBigAmp = FindProperty("_WarpBigAmp", props);
+            warpBigFreqX = FindProperty("_WarpBigFreqX", props);
+            warpBigFreqY = FindProperty("_WarpBigFreqY", props);
+            warpBigSpeedX = FindProperty("_WarpBigSpeedX", props);
+            warpBigSpeedY = FindProperty("_WarpBigSpeedY", props);
+            warpSmallAmp = FindProperty("_WarpSmallAmp", props);
+            warpSmallFreqX = FindProperty("_WarpSmallFreqX", props);
+            warpSmallFreqY = FindProperty("_WarpSmallFreqY", props);
+            warpSmallSpeedX = FindProperty("_WarpSmallSpeedX", props);
+            warpSmallSpeedY = FindProperty("_WarpSmallSpeedY", props);
+            useWarpMain1st = FindProperty("_UseWarpMain1st", props);
+            useWarpMain2nd = FindProperty("_UseWarpMain2nd", props);
+            useWarpMain3rd = FindProperty("_UseWarpMain3rd", props);
+            useWarpMain4th = FindProperty("_UseWarpMain4th", props);
+            useWarpMain5th = FindProperty("_UseWarpMain5th", props);
+            useWarpMain6th = FindProperty("_UseWarpMain6th", props);
+            warpReplaceRefract = FindProperty("_WarpReplaceRefract", props);
+            
         }
 
         protected override void DrawCustomProperties(Material material)
@@ -1031,6 +1097,61 @@ namespace lilToon
                                     }
                                 }
                             lilEditorGUI.DrawLine();
+                        EditorGUILayout.EndVertical();
+                    }
+                EditorGUILayout.EndVertical();
+                
+                EditorGUILayout.BeginVertical(boxOuter);
+                    lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarp, false);
+                    if(useWarp.floatValue == 1)
+                    {
+                        EditorGUILayout.BeginVertical(boxInnerHalf);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpAnimSpeed);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpIntensity);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpBigAmp);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpBigFreqX);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpBigFreqY);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpBigSpeedX);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpBigSpeedY);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpSmallAmp);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpSmallFreqX);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpSmallFreqY);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpSmallSpeedX);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpSmallSpeedY);
+                        lilEditorGUI.DrawLine();
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain1st);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain2nd);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain3rd);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain4th);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain5th);
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, useWarpMain6th);
+                        lilEditorGUI.DrawLine();
+                            lilEditorGUI.LocalizedProperty(m_MaterialEditor, warpReplaceRefract);
+                            GUILayout.Label("Warning\nThis replaces refraction\nPerformance improvements over built-in refraction\nOnly works in refraction mode");
+                        lilEditorGUI.DrawLine();
+                        lilEditorGUI.DrawLine();
+                            if (GUILayout.Button("Copy Warp"))
+                            {
+                                CopyCategory(warpCategory, material);
+                            }
+                        lilEditorGUI.DrawLine();
+                            if (GUILayout.Button("Paste Warp"))
+                            {
+                                PasteCategory(warpCategory, material);
+                            }
+                        lilEditorGUI.DrawLine();
+                            if (GUILayout.Button("Reset Warp"))
+                            {
+                                if (EditorUtility.DisplayDialog(
+                                    "Reset Confirmation",
+                                    "Warp will be reset to their default values. \nAre you sure?",
+                                    "Reset",
+                                    "Cancel"))
+                                {
+                                    ResetCategory(warpCategory, material);
+                                }
+                            }
+                        lilEditorGUI.DrawLine();
                         EditorGUILayout.EndVertical();
                     }
                 EditorGUILayout.EndVertical();

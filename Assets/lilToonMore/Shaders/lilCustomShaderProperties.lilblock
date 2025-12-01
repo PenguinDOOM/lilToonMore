@@ -158,4 +158,25 @@
         [lilToggle]     _Glitter2ndApplyTransparency                ("sApplyTransparency", Int) = 1
                         _Glitter2ndVRParallaxStrength               ("sVRParallaxStrength", Range(0, 1)) = 0
         
-        
+        //----------------------------------------------------------------------------------------------------------------------
+        // Warp
+        [lilToggleLeft] _UseWarp                                    ("Warp", Int) = 0
+                        _WarpAnimSpeed                              ("Warp Animation Speed", Range(0,1)) = 1
+                        _WarpIntensity                              ("Warp Intensity", Range(0,1)) = 1
+                        _WarpBigAmp                                 ("Big Warp Amplitude", Float) = 0.015
+                        _WarpBigFreqX                               ("Big Warp Freq X", Float) = 6
+                        _WarpBigFreqY                               ("Big Warp Freq Y", Float) = 8
+                        _WarpBigSpeedX                              ("Big Warp Speed X", Float) = 1.5
+                        _WarpBigSpeedY                              ("Big Warp Speed Y", Float) = 1.2
+                        _WarpSmallAmp                               ("Small Warp Amplitude", Float) = 0.005
+                        _WarpSmallFreqX                             ("Small Warp Freq X", Float) = 22
+                        _WarpSmallFreqY                             ("Small Warp Freq Y", Float) = 25
+                        _WarpSmallSpeedX                            ("Small Warp Speed X", Float) = 3
+                        _WarpSmallSpeedY                            ("Small Warp Speed Y", Float) = 2.8
+        [lilToggle]     _UseWarpMain1st                             ("Main UV Warping", Int) = 0
+        [lilToggle]     _UseWarpMain2nd                             ("Main Color 2nd Warping", Int) = 0
+        [lilToggle]     _UseWarpMain3rd                             ("Main Color 3rd Warping", Int) = 0
+        [lilToggle]     _UseWarpMain4th                             ("Main Color 4th Warping", Int) = 0
+        [lilToggle]     _UseWarpMain5th                             ("Main Color 5th Warping", Int) = 0
+        [lilToggle]     _UseWarpMain6th                             ("Main Color 6th Warping", Int) = 0
+        [lilToggle]     _WarpReplaceRefract                         ("Warp Replace Refract", Int) = 0
