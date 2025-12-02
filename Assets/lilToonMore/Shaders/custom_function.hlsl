@@ -1,17 +1,30 @@
+float fastsin3(float x)
+{
+    x = fmod(x + LIL_PI, 2.0 * LIL_PI) - LIL_PI;
+    return x * (1.27323954 - 0.405284735 * abs(x));
+}
+
 void warp(inout float2 inuv)
 {
     float2 uv = inuv;
-    float time = lerp(0.0, _Time.y, _WarpAnimSpeed);
+    float time = LIL_TIME * _WarpAnimSpeed;
+    
+    float x = uv.x;
+    float y = uv.y;
 
-    uv.x += sin(uv.y * _WarpBigFreqY + time * _WarpBigSpeedX) * _WarpBigAmp;
-    uv.y += sin(uv.x * _WarpBigFreqX + time * _WarpBigSpeedY) * _WarpBigAmp;
+    x += fastsin3(y * _WarpBigFreqY + time * _WarpBigSpeedX) * _WarpBigAmp;
+    y += fastsin3(x * _WarpBigFreqX + time * _WarpBigSpeedY) * _WarpBigAmp;
 
-    uv.x += sin(uv.y * _WarpSmallFreqY + time * _WarpSmallSpeedX) * _WarpSmallAmp;
-    uv.y += sin(uv.x * _WarpSmallFreqX + time * _WarpSmallSpeedY) * _WarpSmallAmp;
+    x += fastsin3(y * _WarpSmallFreqY + time * _WarpSmallSpeedX) * _WarpSmallAmp;
+    y += fastsin3(x * _WarpSmallFreqX + time * _WarpSmallSpeedY) * _WarpSmallAmp;
+    
+    uv.x = x;
+    uv.y = y;
 
-    inuv = lerp(inuv, uv, _WarpIntensity);
+    inuv = inuv + (uv - inuv) * _WarpIntensity;
 }
 
+// Background Warping
 #if defined(LIL_REFRACTION) && !defined(LIL_LITE)
     void lilBGWarp(inout lilFragData fd LIL_SAMP_IN_FUNC(samp))
     {
